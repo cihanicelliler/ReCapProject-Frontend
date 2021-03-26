@@ -1,0 +1,12 @@
+<div class="card text-light bg-dark mb-12" style="width: 40rem;">
+    <img *ngFor="let cardetail of carDetails" src="{{carImageBasePath}}{{cardetail.imagePath}}" class="card-img-top" alt="{{carImageBasePath + cardetail.imagePath}}">
+    <div class="card-body">
+      <h5 *ngFor="let cardetail of carDetails" class="card-title">{{cardetail.description}}</h5>
+    </div>
+    <ul *ngFor="let cardetail of carDetails" class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-dark">{{cardetail.brandName}}</li>
+      <li class="list-group-item list-group-item-dark">{{cardetail.colorName}}</li>
+      <li class="list-group-item list-group-item-dark">{{cardetail.dailyPrice}}</li>
+    </ul>
+  </div>
+  
