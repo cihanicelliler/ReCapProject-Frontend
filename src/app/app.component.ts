@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RentAddComponent } from './components/rental/rent-add/rent-add.component';
 
 @Component({
   selector: 'app-root',

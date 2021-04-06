@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CarDetail } from 'src/app/models/carDetail';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
@@ -12,10 +13,10 @@ import { CarDetailService } from 'src/app/services/car-detail.service';
 })
 export class DetailComponent implements OnInit {
 
-  constructor(private carDetailService: CarDetailService,private activatedRoute:ActivatedRoute) { }
+  constructor(private carDetailService: CarDetailService,private activatedRoute:ActivatedRoute,private toastrService:ToastrService) { }
   carDetails: CarDetail[] = [];
   dataLoaded=false;
-  carImageBasePath="https://localhost:44309/";
+  carImageBasePath="https://localhost:44309/uploads/";
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
       if(params["id"]){
@@ -30,6 +31,17 @@ export class DetailComponent implements OnInit {
       this.carDetails=response.data;
       this.dataLoaded=true;
     })
+  }
+
+  getCarDetails(){
+    this.carDetailService.getCarDetails().subscribe((response)=>{
+      this.carDetails=response.data;
+      this.dataLoaded=true;
+    })
+  }
+
+  addToCart(carDetail:CarDetail){
+    this.toastrService.info("Kiralama sayfasına yönlendiriliyor...",carDetail.brandName)
   }
   
 }

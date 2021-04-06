@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/carDetail';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { CarService } from 'src/app/services/car.service';
 export class CarComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded=false;
+  filterText="";
   constructor(private carService: CarService,private activatedRoute:ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -46,4 +48,6 @@ export class CarComponent implements OnInit {
       this.dataLoaded=true;
     });
   }
+
+
 }

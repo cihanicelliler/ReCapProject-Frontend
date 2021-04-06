@@ -11,6 +11,7 @@ export class BrandComponent implements OnInit {
 
   brands: Brand[] = [];
   currentBrand:Brand;
+  selectedBrandId:number;
   dataLoaded=false;
   constructor(private brandService:BrandService) { }
 
@@ -41,5 +42,4 @@ export class BrandComponent implements OnInit {
       return "list-group-item list-group-item-action list-group-item-dark"
     }
   }
-
 }

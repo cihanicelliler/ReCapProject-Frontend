@@ -15,4 +15,9 @@ export class CarDetailService {
     let newApiUrl = this.apiUrl + "cardetailsbyid?id=" + carId;
     return this.httpClient.get<ListResponseModel<CarDetail>>(newApiUrl);
   }
+
+  getCarDetails() : Observable<ListResponseModel<CarDetail>>{
+    let newApiUrl = this.apiUrl + "cardetails";
+    return this.httpClient.get<ListResponseModel<CarDetail>>(newApiUrl);
+  }
 }
