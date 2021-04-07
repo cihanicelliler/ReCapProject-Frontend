@@ -43,13 +43,13 @@ export class RentAddComponent implements OnInit {
         this.getCarDetailsById(params['rentcarid']);
         this.onSubmit();
       } else {
-        this.getRentals();
+        this.getRentalDetails();
         this.onSubmit();
       }
     });
   }
-  getRentals() {
-    this.rentService.getRents().subscribe((response) => {
+  getRentalDetails() {
+    this.rentService.getRentalDetails().subscribe((response) => {
       this.rentals = response.data;
       this.dataLoaded = true;
     });

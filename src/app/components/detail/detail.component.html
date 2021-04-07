@@ -28,7 +28,8 @@
     <ul *ngIf="carDetails[0]" class="list-group list-group-flush">
       <li class="list-group-item list-group-item-dark">Marka: {{carDetails[0].brandName}}</li>
       <li class="list-group-item list-group-item-dark">Renk: {{carDetails[0].colorName}}</li>
-      <li class="list-group-item list-group-item-dark">Günlük Ücret: {{carDetails[0].dailyPrice}}</li>
+      <li class="list-group-item list-group-item-dark">Günlük Ücret: {{carDetails[0].dailyPrice | currency: "₺"}}</li>
+      <li class="list-group-item list-group-item-dark">Aylık Ücret: {{carDetails[0].dailyPrice | vatAdded | currency: "₺"}}</li>
       <li class="list-group-item list-group-item-dark">Model Yılı: {{carDetails[0].modelYear}}</li>
       <button type="button" routerLink="/cars/rent-add/{{carDetails[0].carId}}" (click)="addToCart(carDetails[0])" class="btn btn-success">Kirala</button>
     </ul>

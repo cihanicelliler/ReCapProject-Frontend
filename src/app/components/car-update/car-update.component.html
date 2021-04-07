@@ -1,0 +1,95 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="title">Araba Güncelle</h1>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="carUpdateForm">
+          <div *ngIf="cars" class="form-group">
+            <input
+              type="number"
+              id="id"
+              formControlName="id"
+              [(ngModel)]="idText"
+              class="form-control"
+              placeholder="{{ cars[0].id }}"            
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <select class="form-select" id="brands" formControlName="brandId">
+              <option *ngIf="cars" value="">{{ cars[0].brandId }}</option>
+              <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
+                {{ brand.brandName }}
+              </option>
+            </select>
+          </div>
+          <br />
+          <div class="form-group">
+            <select class="form-select" id="colors" formControlName="colorId">
+              <option *ngIf="cars" value="">{{ cars[0].colorId }}</option>
+
+              <option *ngFor="let color of colors" [ngValue]="color.colorId">
+                {{ color.colorName }}
+              </option>
+            </select>
+          </div>
+          <br />
+          <div class="form-group">
+            <input
+              *ngIf="cars"
+              type="number"
+              id="modelYear"
+              formControlName="modelYear"
+              [(ngModel)]="modelYearText"
+              class="form-control"
+              placeholder="{{ cars[0].modelYear }}"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <input
+              *ngIf="cars"
+              type="number"
+              id="dailyPrice"
+              formControlName="dailyPrice"
+              [(ngModel)]="dailyPriceText"
+              class="form-control"
+              placeholder="{{ cars[0].dailyPrice }}"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <input
+              *ngIf="cars"
+              type="text"
+              id="descriptionCar"
+              formControlName="descriptionCar"
+              class="form-control"
+              [(ngModel)]="descriptionCarText"
+              placeholder="{{ cars[0].descriptionCar }}"
+            />
+          </div>
+          <br />
+          <div class="card-footer">
+            <button
+              type="button"
+              class="btn btn-success col-md-5 mx-3"
+              (click)="update()"
+            >
+              Güncelle
+            </button>
+            <button
+              (click)="delete()"
+              type="button"
+              class="btn btn-danger col-md-5 mx-3"
+            >
+              Sil
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

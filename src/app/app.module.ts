@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -23,6 +23,10 @@ import { RentAddComponent } from './components/rental/rent-add/rent-add.componen
 import { ToastrModule } from 'ngx-toastr';
 import { PaymentComponent } from './components/payment/payment.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { FooterComponent } from './components/footer/footer.component';
     RentAddComponent,
     PaymentComponent,
     FooterComponent,
+    CarAddComponent,
+    BrandAddComponent,
+    ColorAddComponent,
+    CarUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +61,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatMomentDateModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

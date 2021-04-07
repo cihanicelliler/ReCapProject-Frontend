@@ -1,0 +1,38 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="title">Renk Ekle</h1>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="colorAddForm">
+            <br />
+            <div class="form-group">
+              <input
+                type="text"
+                [(ngModel)]="colorText"
+                id="colorName"
+                formControlName="colorName"
+                class="form-control"
+                placeholder="Renk"
+              />
+            </div>
+            <br>
+            <div class="card-footer">
+              <button
+                type="button"
+                class="btn btn-success col-md-5 mx-3"
+                (click)="add()"
+              >
+                Ekle
+              </button>
+              <button (click)="delete()" type="button" class="btn btn-danger col-md-5 mx-3">
+                Sil
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

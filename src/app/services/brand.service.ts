@@ -9,11 +9,14 @@ import { ListResponseModel } from '../models/listResponseModel';
 })
 export class BrandService {
 
-  apiUrl="https://localhost:44309/api/brand/getall";
+  apiUrl="https://localhost:44309/api/brand/";
   constructor(private httpClient:HttpClient) { }
 
   getBrands():Observable<ListResponseModel<Brand>>{
     return this.httpClient
-    .get<ListResponseModel<Brand>>(this.apiUrl);
+    .get<ListResponseModel<Brand>>(this.apiUrl+"getall");
+  }
+  add(brand:Brand){
+    return this.httpClient.post(this.apiUrl+"add",brand)
   }
 }

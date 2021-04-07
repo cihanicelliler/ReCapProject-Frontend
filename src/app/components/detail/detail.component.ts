@@ -30,11 +30,12 @@ export class DetailComponent implements OnInit {
     this.carDetailService.getCarDetailByCarId(id).subscribe((response)=>{
       this.carDetails=response.data;
       this.dataLoaded=true;
+      console.log(this.carDetails)
     })
   }
 
   getCarDetails(){
-    this.carDetailService.getCarDetails().subscribe((response)=>{
+    this.carDetailService.getAllCarsDetails().subscribe((response)=>{
       this.carDetails=response.data;
       this.dataLoaded=true;
     })

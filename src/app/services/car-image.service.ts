@@ -17,4 +17,9 @@ export class CarImageService {
 
     return this.httpClient.get<ListResponseModel<CarImage>>(newApiUrl);
   }
+  addImage(fileToUpload:File){
+    const formData:FormData = new FormData();
+    formData.append('imagePath',fileToUpload,fileToUpload.name)
+    return this.httpClient.post(this.apiUrl+"add",formData)
+  }
 }

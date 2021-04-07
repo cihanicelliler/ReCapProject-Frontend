@@ -13,8 +13,13 @@ export class RentalService {
   apiUrl="https://localhost:44309/api/rental/"
   constructor(private httpClient:HttpClient) { }
 
-  getRents():Observable<ListResponseModel<Rental>>{
+  getRentalDetails():Observable<ListResponseModel<Rental>>{
     let newApiUrl = this.apiUrl+"getrentdetails";
+    return this.httpClient
+    .get<ListResponseModel<Rental>>(newApiUrl);
+  }
+  getRents():Observable<ListResponseModel<Rental>>{
+    let newApiUrl = this.apiUrl+"getall";
     return this.httpClient
     .get<ListResponseModel<Rental>>(newApiUrl);
   }

@@ -9,21 +9,17 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Araba Açıklaması</th>
-      <th>Şirket Adı</th>
-      <th>Müşteri Adı</th>
-      <th>Müşteri Soyadı</th>
+      <th>Araba Id</th>
+      <th>Müşteri Id</th>
       <th>Kiralanma Tarihi</th>
       <th>Geri Getirilme Tarihi</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let rent of rentals">
-      <td>{{ rent.rentId }}</td>
-      <td>{{ rent.carName }}</td>
-      <td>{{ rent.companyName }}</td>
-      <td>{{ rent.customerName }}</td>
-      <td>{{ rent.customerSurname }}</td>
+      <td>{{ rent.id }}</td>
+      <td>{{ rent.carId }}</td>
+      <td>{{ rent.customerId }}</td>
       <td>{{ rent.rentDate }}</td>
       <td>{{ rent.returnDate }}</td>
     </tr>

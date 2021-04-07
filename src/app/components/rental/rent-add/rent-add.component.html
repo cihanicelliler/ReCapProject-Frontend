@@ -61,7 +61,10 @@
       Renk: {{ carDetails[0].colorName }}
     </li>
     <li class="list-group-item list-group-item-dark">
-      Günlük Ücret: {{ carDetails[0].dailyPrice }}
+      Günlük Ücret: {{ carDetails[0].dailyPrice | currency: "₺" }}
+    </li>
+    <li class="list-group-item list-group-item-dark">
+      Aylık Ücret: {{ carDetails[0].dailyPrice | vatAdded | currency: "₺" }}
     </li>
     <li class="list-group-item list-group-item-dark">
       Model Yılı: {{ carDetails[0].modelYear }}

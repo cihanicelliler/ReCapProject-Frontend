@@ -19,30 +19,114 @@
 <div *ngIf="filterText.length > 2" class="alert alert-success">
   {{ filterText }} aradınız
 </div>
+<div class="container-fluid">
+  <div
+    class="col-md-5"
+    style="float: left; width: 18rem; margin-right: 1rem; margin-bottom: 1rem"
+    *ngFor="
+      let arabalar of carDetails.slice().reverse() | carFilterPipe: filterText
+    "
+    class="card"
+  >
+    <img
+      class="card-img-top"
+      src="{{ carImageBasePath }}{{ arabalar.imagePath }}"
+      alt="Araba resmi"
+    />
+    <div class="card-body">
+      <h1 class="card-title"><b>{{ arabalar.description }}</b></h1>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>Marka: </b>{{ arabalar.brandName }}</li>
+      <li class="list-group-item"><b>Renk: </b>{{ arabalar.colorName }}</li>
+      <li class="list-group-item"><b>Model Yılı: </b>{{ arabalar.modelYear }}</li>
+      <li class="list-group-item">
+        <b>Günlük Ücret: </b>{{ arabalar.dailyPrice | currency: "₺" }}
+      </li>
+      <li class="list-group-item">
+        <b>Aylık Ücret: </b>{{ arabalar.dailyPrice | vatAdded | currency: "₺" }}
+      </li>
+    </ul>
+    <div class="card-body">
+      <a
+        routerLink="cars/detail/{{ arabalar.carId }}"
+        class="btn btn-primary mx-2"
+        >Detay sayfası</a
+      >
+      <a
+        routerLink="cars/update/{{ arabalar.carId }}"
+        class="btn btn-warning mx-2"
+        >Güncelle</a
+      >
+    </div>
+  </div>
+</div>
 
-<table *ngIf="dataLoaded == true" class="table table-dark">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Marka</th>
-      <th>Renk</th>
-      <th>Model Yılı</th>
-      <th>Günlük Ücret</th>
-      <th>Aylık Ücret</th>
-      <th>Araba Açıklaması</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let car of cars | carFilterPipe: filterText"
+
+<div *ngIf="dataBrand">
+  <div class="container-fluid">
+    <div
+      class="col-md-5"
+      style="float: left; width: 18rem; margin-right: 1rem; margin-bottom: 1rem"
+      *ngFor="let araba of arabalar"
+      class="card"
     >
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.id }}</td>
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.brandId }}</td>
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.colorId }}</td>
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.modelYear }}</td>
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.dailyPrice | currency }}</td>
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.dailyPrice | vatAdded | currency }}</td>
-      <td routerLink="/cars/detail/{{ car.id }}">{{ car.descriptionCar }}</td>
-    </tr>
-  </tbody>
-</table>
+      <div class="card-body">
+        <h1 class="card-title">{{ araba.id }}</h1>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Açıklama: </b>{{ araba.descriptionCar }}</li>
+        <li class="list-group-item"><b>Marka: </b>{{ araba.brandId }}</li>
+        <li class="list-group-item"><b>Renk: </b>{{ araba.colorId }}</li>
+        <li class="list-group-item"><b>Model Yılı: </b>{{ araba.modelYear }}</li>
+        <li class="list-group-item">
+          Günlük Ücret: {{ araba.dailyPrice | currency: "₺" }}
+        </li>
+        <li class="list-group-item">
+          Aylık Ücret: {{ araba.dailyPrice | vatAdded | currency: "₺" }}
+        </li>
+      </ul>
+      <div class="card-body">
+        <a
+          (click)="goToDetail(araba.id)"
+          class="btn btn-primary"
+          >Detay sayfası</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dataColor">
+  <div class="container-fluid">
+    <div
+      class="col-md-5"
+      style="float: left; width: 18rem; margin-right: 1rem; margin-bottom: 1rem"
+      *ngFor="let araba of arabalar"
+      class="card"
+    >
+      <div class="card-body">
+        <h1 class="card-title">{{ araba.id }}</h1>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Açıklama: </b>{{ araba.descriptionCar }}</li>
+        <li class="list-group-item"><b>Marka:</b> {{ araba.brandId }}</li>
+        <li class="list-group-item"><b>Renk:</b> {{ araba.colorId }}</li>
+        <li class="list-group-item"><b>Model Yılı:</b> {{ araba.modelYear }}</li>
+        <li class="list-group-item">
+          Günlük Ücret: {{ araba.dailyPrice | currency: "₺" }}
+        </li>
+        <li class="list-group-item">
+          Aylık Ücret: {{ araba.dailyPrice | vatAdded | currency: "₺" }}
+        </li>
+      </ul>
+      <div class="card-body">
+        <a
+          (click)="goToDetail(araba.id)"
+          class="btn btn-primary"
+          >Detay sayfası</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
