@@ -23,12 +23,12 @@ ng serve --open
 
 :pushpin: Some images from the project:
 <br><br>
-<a href="https://resimlink.com/w9LWjEY" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/w9LWjEY.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a>
-![alt text](https://i.resmim.net/Kwgh7.png) <br>
-![alt text](https://i.resmim.net/KwGGa.png) <br>
-![alt text](https://i.resmim.net/Kw3mn.png) <br>
-![alt text](https://i.resmim.net/KweAf.png) <br>
-![alt text](https://i.resmim.net/KwX92.png) <br>
+<a href="https://resimlink.com/w9LWjEY" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/w9LWjEY.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a><br>
+<a href="https://resimlink.com/QKMfpgX" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/QKMfpgX.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a><br>
+<a href="https://resimlink.com/k2VSMxe" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/k2VSMxe.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a> <br>
+<a href="https://resimlink.com/tb8ZdlyJ" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/tb8ZdlyJ.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a> <br>
+<a href="https://resimlink.com/nxjkSO" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/nxjkSO.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a><br>
+<a href="https://resimlink.com/mAqIP" title="ResimLink - Resim Yükle"><img src="https://r.resimlink.com/mAqIP.png" title="ResimLink - Resim Yükle" alt="ResimLink - Resim Yükle"></a> <br>
 <br>
 
 <br>
