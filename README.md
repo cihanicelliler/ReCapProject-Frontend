@@ -23,7 +23,7 @@ ng serve --open
 
 :pushpin: Some images from the project:
 <br><br>
-<a href="https://resmim.net/i/Kwcvr"><img src="https://i.resmim.net/Kwcvr.png" alt="Kwcvr.png" border="0"></a>
+[![Kwcvr.png](https://i.resmim.net/Kwcvr.png)](https://resmim.net/i/Kwcvr)
 ![alt text](https://i.resmim.net/Kwgh7.png) <br>
 ![alt text](https://i.resmim.net/KwGGa.png) <br>
 ![alt text](https://i.resmim.net/Kw3mn.png) <br>
