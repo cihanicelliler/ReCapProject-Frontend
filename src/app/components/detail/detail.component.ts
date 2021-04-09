@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CarDetail } from 'src/app/models/carDetail';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,11 +17,13 @@ export class DetailComponent implements OnInit {
   findexPointUser: number;
   findexPointCar: number;
   isRentable:boolean;
+  isAuth:boolean=false;
   constructor(
     private carDetailService: CarDetailService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private authService:AuthService
   ) {}
   carDetails: CarDetail[] = [];
   dataLoaded = false;
@@ -30,6 +33,7 @@ export class DetailComponent implements OnInit {
       if (params['id']) {
         this.getCarDetailByCarId(params['id']);
         this.getUserPoint();
+        this.isAuthenticated();
       }
     });
   }
@@ -61,5 +65,10 @@ export class DetailComponent implements OnInit {
       'Kiralama sayfasına yönlendiriliyor...',
       carDetail.brandName
     );
+  }
+  isAuthenticated() {
+    if (this.authService.isAuthenticated()) {
+      this.isAuth = true;
+    }
   }
 }

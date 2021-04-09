@@ -32,8 +32,9 @@
       <li class="list-group-item list-group-item-dark mb-1"><b>Aylık Ücret: </b>{{carDetails[0].dailyPrice | vatAdded | currency: "₺"}}</li>
       <li class="list-group-item list-group-item-dark mb-1"><b>Model Yılı: </b>{{carDetails[0].modelYear}}</li>
       <li class="list-group-item list-group-item-dark mb-1"><b>Findeks Puanı: </b>{{carDetails[0].findexPoint}}</li>
-      <button *ngIf="findexPointUser>=findexPointCar" type="button" routerLink="/cars/rent-add/{{carDetails[0].carId}}" (click)="addToCart(carDetails[0])" class="btn btn-success">Kirala</button>
-      <button *ngIf="findexPointUser<findexPointCar" type="button" disabled class="btn btn-success">Kiralamak İçin Findeks Puanı Yetersiz</button>
+      <button *ngIf="findexPointUser>=findexPointCar && isAuth==true" type="button" routerLink="/cars/rent-add/{{carDetails[0].carId}}" (click)="addToCart(carDetails[0])" class="btn btn-success">Kirala</button>
+      <button *ngIf="findexPointUser<findexPointCar && isAuth==true" type="button" disabled class="btn btn-success">Kiralamak İçin Findeks Puanı Yetersiz</button>
+      <button *ngIf="isAuth!=true" type="button" disabled class="btn btn-success">Kiralamak İçin Giriş Yapmalısınız</button>
     </ul>
   </div>
   
