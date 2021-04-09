@@ -24,8 +24,20 @@
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <div class="btn-group">
+          <button *ngIf="isAuth" type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            {{userName | titlecase}} {{userSurname | titlecase}}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Action</a></li>
+            <li><a class="dropdown-item">Another action</a></li>
+            <li><a class="dropdown-item">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logOut()">Çıkış Yap</a></li>
+          </ul>
+        </div>
+        <button *ngIf="!isAuth" class="btn btn-success mx-3" type="submit" routerLink="login">Giriş Yap</button>
+        <button *ngIf="!isAuth" class="btn btn-outline-success" type="submit" routerLink="register">Kayıt Ol</button>
       </form>
     </div>
   </div>

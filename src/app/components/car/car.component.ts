@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarService } from 'src/app/services/car.service';
 
@@ -18,22 +19,27 @@ export class CarComponent implements OnInit {
   dataColor = false;
   message: string;
   filterText = '';
+  isAuth:boolean=false;
   carImageBasePath = 'https://localhost:44309/uploads/';
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
     private carDetailService: CarDetailService,
-    private routerService:Router
+    private routerService:Router,
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
         this.getCarsByBrand(params['brandId']);
+        this.isAuthenticated();
       } else if (params['colorId']) {
         this.getCarsByColor(params['colorId']);
+        this.isAuthenticated();
       } else {
         this.getAllCarsDetails();
+        this.isAuthenticated();
       }
     });
   }
@@ -69,5 +75,10 @@ export class CarComponent implements OnInit {
   }
   goToDetail(id:number){
     this.routerService.navigate(['/cars/detail/' + id]);
+  }
+  isAuthenticated() {
+    if (this.authService.isAuthenticated()) {
+      this.isAuth = true;
+    }
   }
 }

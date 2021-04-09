@@ -5,44 +5,61 @@ import { Observable } from 'rxjs';
 import { CarDetail } from 'src/app/models/carDetail';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { CarDetailService } from 'src/app/services/car-detail.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent implements OnInit {
-
-  constructor(private carDetailService: CarDetailService,private activatedRoute:ActivatedRoute,private toastrService:ToastrService) { }
+  findexPointUser: number;
+  findexPointCar: number;
+  isRentable:boolean;
+  constructor(
+    private carDetailService: CarDetailService,
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService,
+    private userService: UserService
+  ) {}
   carDetails: CarDetail[] = [];
-  dataLoaded=false;
-  carImageBasePath="https://localhost:44309/uploads/";
+  dataLoaded = false;
+  carImageBasePath = 'https://localhost:44309/uploads/';
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["id"]){
-        this.getCarDetailByCarId(params["id"])
-    }})
-    
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['id']) {
+        this.getCarDetailByCarId(params['id']);
+        this.getUserPoint();
+      }
+    });
   }
 
-  
-  getCarDetailByCarId(id:number){
-    this.carDetailService.getCarDetailByCarId(id).subscribe((response)=>{
-      this.carDetails=response.data;
-      this.dataLoaded=true;
-      console.log(this.carDetails)
+  getCarDetailByCarId(id: number) {
+    this.carDetailService.getCarDetailByCarId(id).subscribe((response) => {
+      this.carDetails = response.data;
+      this.dataLoaded = true;
+      this.findexPointCar = response.data[0].findexPoint;
+    });
+  }
+
+  getCarDetails() {
+    this.carDetailService.getAllCarsDetails().subscribe((response) => {
+      this.carDetails = response.data;
+      this.dataLoaded = true;
+    });
+  }
+  getUserPoint() {
+    var email = localStorage.getItem('email');
+    this.userService.getUser(email).subscribe((response)=>{
+      this.findexPointUser=response.data.findexPoint;
+      console.log(this.findexPointUser)
     })
   }
 
-  getCarDetails(){
-    this.carDetailService.getAllCarsDetails().subscribe((response)=>{
-      this.carDetails=response.data;
-      this.dataLoaded=true;
-    })
+  addToCart(carDetail: CarDetail) {
+    this.toastrService.info(
+      'Kiralama sayfasına yönlendiriliyor...',
+      carDetail.brandName
+    );
   }
-
-  addToCart(carDetail:CarDetail){
-    this.toastrService.info("Kiralama sayfasına yönlendiriliyor...",carDetail.brandName)
-  }
-  
 }

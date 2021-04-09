@@ -1,0 +1,69 @@
+<body class="text-center">
+  <img
+    class="mx-auto d-block rounded"
+    src="assets/images/rentcar.jpg"
+    class="rounded float-start"
+    style="width: 45rem;"
+    alt="..."
+  />
+  <main class="form-signin">
+    <form [formGroup]="registerForm">
+      <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          id="floatingInputName"
+          placeholder="Adınız"
+        />
+        <label for="floatingInput">İsim</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          formControlName="lastName"
+          class="form-control"
+          id="floatingInputSurname"
+          placeholder="Soyadınız"
+        />
+        <label for="floatingInput">Soyisim</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          id="floatingInputEmail"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">E-posta</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          id="floatingPassword1"
+          placeholder="Parola"
+        />
+        <label for="floatingPassword">Parola</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          formControlName="password2"
+          type="password"
+          class="form-control"
+          id="floatingPassword2"
+          placeholder="Parola Doğrula"
+        />
+        <label for="floatingPassword">Parola Doğrula</label>
+      </div>
+
+      <button class="w-100 btn btn-lg btn-success" (click)="register()">
+        Kayıt Ol
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+  </main>
+</body>

@@ -22,7 +22,7 @@ export class RentAddComponent implements OnInit {
   carDetails: CarDetail[];
   returnDate1: Date;
   rentcarid: number;
-  dailyPrice:number;
+  dailyPrice: number;
   rentable: boolean = false;
   carImageBasePath = 'https://localhost:44309/uploads/';
   carToBeRented: Rental;
@@ -85,9 +85,20 @@ export class RentAddComponent implements OnInit {
           'Bu tarih aralığında mevcut bir rezervasyon var!'
         );
       } else {
-        console.log(((<any>this.returnDate)-(<any>this.date))/(3600*24*1000))
-        this.carToBeRented={carId:this.rentcarid,rentDate:(<any>this.date).format(),returnDate:(<any>this.returnDate).format(),customerId:this.customerId};
-        this.paymentService.setRental(this.carToBeRented,((<any>this.returnDate)-(<any>this.date))/(3600*24*1000)*this.dailyPrice)
+        console.log(
+          (<any>this.returnDate - <any>this.date) / (3600 * 24 * 1000)
+        );
+        this.carToBeRented = {
+          carId: this.rentcarid,
+          rentDate: (<any>this.date).format(),
+          returnDate: (<any>this.returnDate).format(),
+          customerId: this.customerId,
+        };
+        this.paymentService.setRental(
+          this.carToBeRented,
+          ((<any>this.returnDate - <any>this.date) / (3600 * 24 * 1000)) *
+            this.dailyPrice
+        );
         this.toastrService.info('Ödeme noktasına yönlendiriliyorsunuz...');
         this.rentable = true;
         this.routerService.navigate(['/cars/payment/' + this.rentcarid]);

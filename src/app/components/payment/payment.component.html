@@ -2,12 +2,12 @@
     <div class="card">
       <div class="card-top border-bottom text-center">
         <div class="alert alert-success" role="alert">
-          <h4 class="alert-heading">Ödeme Sayfası</h4>
+          <h1 class="alert-heading"><b>Ödeme Sayfası</b></h1>
         </div>
   
         <div class="card-body">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-5">
               <div class="left border">
                 <div class="row">
                   <div class="icons">
@@ -22,7 +22,7 @@
                 </div>
                 <form>
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 mx-5">
                       <span><b>Kart Üzerindeki İsim:</b></span>
                       <input
                         type="text"
@@ -35,7 +35,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 mx-5">
                       <span><b>Kart Numarası:</b></span>
                       <input
                         type="text"
@@ -48,7 +48,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 mx-5">
                       <span><b>Son Kullanma Tarihi:</b></span>
                       <input
                         type="number"
@@ -59,7 +59,7 @@
                         required
                       />
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 mx-5">
                       <br />
                       <input
                         type="number"
@@ -71,7 +71,7 @@
                       />
                     </div>
                     <div class="row">
-                      <div class="col-4">
+                      <div class="col-4 mx-5 mb-3">
                         <span><b>CVV:</b></span>
                         <input
                           type="number"
@@ -83,37 +83,43 @@
                         />
                       </div>
                     </div>
+                    <div class="checkbox mx-5 col-4">
+                      <label>
+                        <input type="checkbox" [(ngModel)]="rememberCard" [ngModelOptions]="{standalone: true}" value="remember-me" />Kart Bilgilerimi Kaydet
+                      </label>
+                    </div>
                   </div>
                 </form>
               </div>
             </div>
+            <div class="col-md-2"></div>
             <div class="col-md-5">
               <div class="right border">
                 <div class="alert alert-dark" role="alert">
                   Kiralama Detayı
                 </div>
                 
-                <div class="row lower">
+                <div class="row lower mb-3">
                   <div class="col text-left">Marka:</div>
                   <div class="col text-right">{{ carBrandName }}</div>
                 </div>
-                <div class="row lower">
+                <div class="row lower mb-3">
                   <div class="col text-left">Model:</div>
                   <div class="col text-right">{{ carModelYear }}</div>
                 </div>
-                <div class="row lower">
+                <div class="row lower mb-3">
                   <div class="col text-left">Kiralama Tarihi:</div>
                   <div class="col text-right">
                     {{ carToBeRented.rentDate | date: "dd/MM/yyyy HH:mm" }}
                   </div>
                 </div>
-                <div class="row lower">
+                <div class="row lower mb-3">
                   <div class="col text-left">Teslim Tarihi:</div>
                   <div class="col text-right">
                     {{ carToBeRented.returnDate | date: "dd/MM/yyyy HH:mm" }}
                   </div>
                 </div>
-                <div class="row lower">
+                <div class="row lower mb-3">
                   <div class="col text-left"><b>Ödenecek Tutar:</b></div>
                   <div class="col text-right">
                     <b>{{ amountPaye | currency: "₺" }}</b>
@@ -123,6 +129,7 @@
                   <div class="row lower"></div>
                   <button
                     (click)="createPayment()"
+                    (click)="checkBox()"
                     class="add-to-cart btn btn-success"
                   >
                     Ödeme Yap

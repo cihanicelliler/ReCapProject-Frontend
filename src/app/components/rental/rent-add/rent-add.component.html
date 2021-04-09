@@ -47,27 +47,30 @@
     </button>
   </div>
 </div>
-<div class="card text-light bg-dark mb-12" style="width: 30rem">
+<div class="card text-light bg-dark mb-12" style="width: 40rem; margin:auto;">
   <div class="card-body">
-    <h1 *ngIf="carDetails[0]" class="card-title">
+    <h1 *ngIf="carDetails[0]" class="card-title text-center">
       {{ carDetails[0].description }}
     </h1>
   </div>
   <ul *ngIf="carDetails[0]" class="list-group list-group-flush">
-    <li class="list-group-item list-group-item-dark">
-      Marka: {{ carDetails[0].brandName }}
+    <li class="list-group-item list-group-item-dark mb-1">
+      <b>Marka:</b> {{ carDetails[0].brandName }}
     </li>
-    <li class="list-group-item list-group-item-dark">
-      Renk: {{ carDetails[0].colorName }}
+    <li class="list-group-item list-group-item-dark mb-1">
+      <b>Renk: </b>{{ carDetails[0].colorName }}
     </li>
-    <li class="list-group-item list-group-item-dark">
-      Günlük Ücret: {{ carDetails[0].dailyPrice | currency: "₺" }}
+    <li class="list-group-item list-group-item-dark mb-1">
+      <b>Günlük Ücret: </b>{{ carDetails[0].dailyPrice | currency: "₺" }}
     </li>
-    <li class="list-group-item list-group-item-dark">
-      Aylık Ücret: {{ carDetails[0].dailyPrice | vatAdded | currency: "₺" }}
+    <li class="list-group-item list-group-item-dark mb-1">
+      <b>Aylık Ücret: </b>{{ carDetails[0].dailyPrice | vatAdded | currency: "₺" }}
     </li>
-    <li class="list-group-item list-group-item-dark">
-      Model Yılı: {{ carDetails[0].modelYear }}
+    <li class="list-group-item list-group-item-dark mb-1">
+      <b>Model Yılı: </b>{{ carDetails[0].modelYear }}
+    </li>
+    <li class="list-group-item list-group-item-dark mb-1">
+      <b>Findeks Puanı: </b>{{ carDetails[0].findexPoint }}
     </li>
   </ul>
 </div>
