@@ -22,61 +22,83 @@
     <div *ngIf="filterText.length > 2" class="alert alert-success">
       {{ filterText }} aradınız
     </div>
-    <div class="container-fluid">
-      <div
-        class="col-md-5"
-        style="
-          float: left;
-          width: 18rem;
-          margin-right: 1rem;
-          margin-bottom: 1rem;
-        "
-        *ngFor="
-          let arabalar of carDetails.slice().reverse()
-            | carFilterPipe: filterText
-        "
-        class="card"
-      >
-        <img
-          class="card-img-top"
-          src="{{ carImageBasePath }}{{ arabalar.imagePath }}"
-          alt="Araba resmi"
-        />
-        <div class="card-body">
-          <h1 class="card-title">
-            <b>{{ arabalar.description }}</b>
-          </h1>
+    <div
+      class="card-container mx-2"
+      *ngFor="
+        let arabalar of carDetails.slice().reverse() | carFilterPipe: filterText
+      "
+      style="float: left"
+    >
+      <div class="card" style="width: 19rem">
+        <div class="front">
+          <div>
+            <img
+              class="card-img-top"
+              style="object-fit: cover"
+              src="{{ carImageBasePath }}{{ arabalar.imagePath }}"
+            />
+          </div>
+          <div class="content">
+            <div class="main">
+              <h3 class="name"><b>{{ arabalar.description }}</b></h3>
+              <p class="profession">{{ arabalar.brandName }}</p>
+            </div>
+          </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <b>Marka: </b>{{ arabalar.brandName }}
-          </li>
-          <li class="list-group-item"><b>Renk: </b>{{ arabalar.colorName }}</li>
-          <li class="list-group-item">
-            <b>Model Yılı: </b>{{ arabalar.modelYear }}
-          </li>
-          <li class="list-group-item">
-            <b>Günlük Ücret: </b>{{ arabalar.dailyPrice | currency: "₺" }}
-          </li>
-          <li class="list-group-item">
-            <b>Aylık Ücret: </b
-            >{{ arabalar.dailyPrice | vatAdded | currency: "₺" }}
-          </li>
-        </ul>
-        <div class="card-body">
-          <a
-            routerLink="cars/detail/{{ arabalar.carId }}"
-            class="btn btn-primary mx-2"
-            >Detay sayfası</a
-          >
-          <a *ngIf="isAuth"
-            routerLink="cars/update/{{ arabalar.carId }}"
-            class="btn btn-warning mx-2"
-            >Güncelle</a
-          >
+        <!-- end front panel -->
+        <div class="back">
+          <div class="header">
+            <h5 class="motto">"En Kaliteli Araçlarla Hizmetinizdeyiz..."</h5>
+          </div>
+          <div class="content">
+            <div class="main">
+              <h4 class="text-center"><b>{{ arabalar.description }}</b></h4>
+              <p class="text-center">
+                {{ arabalar.brandName }}
+              </p>
+
+              <div class="stats-container">
+                <div class="stats">
+                  <p class="mb-0"><b>Renk</b></p>
+                  <h4>{{ arabalar.colorName }}</h4>
+                </div>
+                <div class="stats">
+                  <p class="mb-0"><b>Model Yılı</b></p>
+                  <h4>{{ arabalar.modelYear }}</h4>
+                </div>
+                <div class="stats">
+                  <p class="mb-0"><b>Günlük Ücret</b></p>
+                  <h4>{{ arabalar.dailyPrice | currency: "₺" }}</h4>
+                </div>
+                <div class="stats">
+                  <p class="mb-0"><b>Aylık Ücret</b></p>
+                  <h4>{{ arabalar.dailyPrice | vatAdded | currency: "₺" }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer mt-0">
+            <div class="social-links text-center">
+              <a
+                routerLink="cars/detail/{{ arabalar.carId }}"
+                class="btn btn-primary mx-2"
+                >Detay sayfası</a
+              >
+              <a
+                *ngIf="isAuth"
+                routerLink="cars/update/{{ arabalar.carId }}"
+                class="btn btn-warning mx-2"
+                style="color: white;"
+                >Güncelle</a
+              >
+            </div>
+          </div>
         </div>
+        <!-- end back panel -->
       </div>
+      <!-- end card -->
     </div>
+    <!-- end card-container -->
 
     <div *ngIf="dataBrand">
       <div class="container-fluid">

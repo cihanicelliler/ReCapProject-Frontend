@@ -41,6 +41,11 @@ export class NaviComponent implements OnInit {
     this.toastrService.info('Çıkış Yapıldı');
     localStorage.setItem('token', '');
     localStorage.setItem('email', '');
+    localStorage.setItem('cardDate', '');
+    localStorage.setItem('cardCvv', '');
+    localStorage.setItem('cardNameSurname', '');
+    localStorage.setItem('rememberCard', '');
+    localStorage.setItem('cardNumber', '');
     window.location.href="http://localhost:4200/login";
   }
 }
